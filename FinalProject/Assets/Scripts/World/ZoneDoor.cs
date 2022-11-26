@@ -14,7 +14,7 @@ public class ZoneDoor : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Player") && SceneManager.GetSceneByName(nextScene).IsValid() && !SceneManager.GetSceneByName(nextScene).isLoaded)
+        if (collision.gameObject.CompareTag("Player"))
         {
             SceneManager.LoadScene(nextScene, LoadSceneMode.Single);
         }
