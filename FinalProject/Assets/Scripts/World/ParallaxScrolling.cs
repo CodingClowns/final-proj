@@ -11,11 +11,11 @@ public class ParallaxScrolling : MonoBehaviour
     [SerializeField] private Transform followObject;
 
     [Tooltip("How much the parallax should scroll horizontally.")]
-    [Range(0.0f, 1.0f)]
+    [Range(-1.0f, 1.0f)]
     [SerializeField] private float scrollFactorX;
 
     [Tooltip("How much the parallax should scroll vertically.")]
-    [Range(0.0f, 1.0f)]
+    [Range(-1.0f, 1.0f)]
     [SerializeField] private float scrollFactorY;
 
     private void Update()
