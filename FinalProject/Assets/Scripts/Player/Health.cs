@@ -1,34 +1,41 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
+public delegate void PlayerVoidEvent();
+public delegate void PlayerBoolEvent(bool value);
+
+/// <summary>
+/// Adds health to a player.
+/// </summary>
 public class Health : MonoBehaviour
 {
+    public event PlayerVoidEvent OnDeath;
+    public event PlayerBoolEvent OnDamaged;
+    public event PlayerVoidEvent OnFullHealth;
+    public event PlayerVoidEvent OnHealed;
+
     [SerializeField] private int maxHealth;
     [SerializeField] private float maxInvincibilityTime;
-<<<<<<< Updated upstream
-    private int currentHealth;
-=======
-    [SerializeField] private Image healthBar;
-
->>>>>>> Stashed changes
     private float invincibilityTime;
-    private float healthPercentage;
 
+    /// <summary>
+    /// Current health of the player.
+    /// </summary>
     public int CurrentHealth
     {
-        get => currentHealth;
+        get; private set;
     }
 
-    public bool CanDamage()
+    /// <summary>
+    /// Returns true if the player can be damaged.
+    /// </summary>
+    /// <returns></returns>
+    public bool CanDamage() //Only takes invincibility frames into account atm, but can be expanded upon if necessary.
     {
         return invincibilityTime <= 0;
     }
 
-<<<<<<< Updated upstream
-    private void FixedUpdate()
-=======
     /// <summary>
     /// Damages the player and sets invincibility time. If the player dies, an OnDeath event will be called.
     /// </summary>
@@ -36,7 +43,6 @@ public class Health : MonoBehaviour
     public void Damage(int damage)
     {
         CurrentHealth -= damage;
-        UpdateHealthBar();
 
         if (CurrentHealth <= 0)
         {
@@ -59,8 +65,7 @@ public class Health : MonoBehaviour
         }
         if (CurrentHealth > 0)
         {
-            if (OnDamaged != null)
-                OnDamaged(canDamage);
+            OnDamaged(canDamage);
         }
     }
 
@@ -72,7 +77,6 @@ public class Health : MonoBehaviour
     public bool Heal(int damage)
     {
         CurrentHealth = Mathf.Min(CurrentHealth + damage, maxHealth);
-        UpdateHealthBar();
 
         if (CurrentHealth >= maxHealth)
         {
@@ -98,40 +102,20 @@ public class Health : MonoBehaviour
     /// Reduces invincibility time if it's active.
     /// </summary>
     private void InvincibilityTimer()
->>>>>>> Stashed changes
     {
         if (invincibilityTime > 0)
         {
             invincibilityTime -= Time.deltaTime;
         }
     }
-<<<<<<< Updated upstream
-=======
 
     private void Start()
     {
         CurrentHealth = maxHealth;
     }
 
-    private void Update()
-    {
-        // Testing only
-        if (Input.GetKeyDown(KeyCode.I))
-        {
-            TryDamage(13);
-        }
-    }
-
     private void FixedUpdate()
     {
         InvincibilityTimer();
     }
-
-    //===== Health Sytem - Tin Ly
-    private void UpdateHealthBar()
-    {
-        healthPercentage = (float)CurrentHealth / maxHealth;
-        healthBar.rectTransform.localScale = new Vector3(healthPercentage, 1.0f, 1.0f);
-    }
->>>>>>> Stashed changes
 }
