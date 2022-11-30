@@ -4,8 +4,7 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Hazard
-  - ZoneDoor
+  - VCAMConfiner
   layers:
   - Default
   - TransparentFX
@@ -14,9 +13,9 @@ TagManager:
   - Water
   - UI
   - 
-  - StageTilemap
-  - StageForeground
-  - ZoneDoors
+  - 
+  - 
+  - 
   - 
   - 
   - 
@@ -40,18 +39,18 @@ TagManager:
   - 
   - 
   m_SortingLayers:
-  - name: Background+
-    uniqueID: 1333264547
-    locked: 0
-  - name: Background
-    uniqueID: 2128441505
-    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Foreground
-    uniqueID: 676573653
+  - name: BackTileGrid
+    uniqueID: 3230369333
     locked: 0
-  - name: Foreground+
-    uniqueID: 2065001995
+  - name: Instances
+    uniqueID: 2578638741
+    locked: 0
+  - name: FrontTileGrid
+    uniqueID: 3479518717
+    locked: 0
+  - name: Collisions
+    uniqueID: 1758307675
     locked: 0
