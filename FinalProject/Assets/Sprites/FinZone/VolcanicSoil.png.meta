@@ -1,16 +1,16 @@
 fileFormatVersion: 2
-guid: 4cac0480b0e352841a935ed369f3ebd3
+guid: 7f7ff9ccbbe269944a4d2f0e6836c2a3
 TextureImporter:
   internalIDToNameTable:
   - first:
       213: 7482667652216324306
     second: Square
   - first:
-      213: 4267118611488381187
-    second: HotCoals_0
+      213: -3467567320249729670
+    second: VolcanicSoil_0
   - first:
-      213: -1619151623139647074
-    second: HotCoals_1
+      213: -8306117460075030354
+    second: VolcanicSoil_1
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -136,7 +136,28 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: HotCoals_0
+      name: VolcanicSoil_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a7df2c9e4e9b0efc0800000000000000
+      internalID: -3467567320249729670
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: VolcanicSoil_1
       rect:
         serializedVersion: 2
         x: 0
@@ -144,49 +165,24 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 309193cd4c9d73b30800000000000000
-      internalID: 4267118611488381187
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: HotCoals_1
-      rect:
-        serializedVersion: 2
-        x: 16
-        y: 0
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape:
-      - - {x: -8, y: -7}
-        - {x: -8, y: -8}
-        - {x: 8, y: -8}
-        - {x: 8, y: -7}
-      tessellationDetail: 0
-      bones: []
-      spriteID: e91a3496d2e9789e0800000000000000
-      internalID: -1619151623139647074
+      spriteID: ea8de818d2ebabc80800000000000000
+      internalID: -8306117460075030354
       vertices: []
       indices: 
       edges: []
       weights: []
     outline: []
     physicsShape:
-    - - {x: -8, y: 8}
-      - {x: -8, y: -8}
-      - {x: 8, y: -8}
-      - {x: 8, y: 8}
+    - - {x: -128, y: 128}
+      - {x: -128, y: -128}
+      - {x: 128, y: -128}
+      - {x: 128, y: 128}
     bones: []
     spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
