@@ -3,7 +3,8 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - VCAMConfiner
   layers:
   - Default
   - TransparentFX
@@ -40,4 +41,16 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: BackTileGrid
+    uniqueID: 3230369333
+    locked: 0
+  - name: Instances
+    uniqueID: 2578638741
+    locked: 0
+  - name: FrontTileGrid
+    uniqueID: 3479518717
+    locked: 0
+  - name: Collisions
+    uniqueID: 1758307675
     locked: 0
