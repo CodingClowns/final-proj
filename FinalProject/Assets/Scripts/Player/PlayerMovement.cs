@@ -4,46 +4,48 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    [Tooltip("How fast the player moves.")]
     [SerializeField] private float speed;
+    [Tooltip("How much force the player jumps with.")]
     [SerializeField] private float jumpForce;
-    [SerializeField] private Rigidbody2D rb;
-    [SerializeField] private Sprite Idel;
-    [SerializeField] private Sprite Crouch;
-    [SerializeField] private BoxCollider2D collider2D;
-    [SerializeField] private SpriteRenderer sp;
 
+    [Header("References")]
+    [SerializeField] private Rigidbody2D rigidBody;
+    [SerializeField] private Sprite idleSprite;
+    [SerializeField] private Sprite crouchingSprite;
+    [SerializeField] private BoxCollider2D playerCollider;
+    [SerializeField] private SpriteRenderer spriteRenderer;
 
-    private bool PlayerIsJumpable = false;
+    private bool crouching = false;
+    private bool canJump = false;
+    private bool jumping = false;
     private float horizontalMovement;
-    private float oringinalspeed;
-    private Vector2 IdelSize;
-    private Vector2 CrouchSize;
-    // Start is called before the first frame update
-    private void Start()
-    {
-        /*collider2D.size = IdelSize;
-        sp.sprite = Idel;
+    private Vector2 hitboxIdle;
+    private Vector2 hitboxCrouching;
 
-        IdelSize = collider2D.size;*/
-        oringinalspeed = speed;
-    }
-
-    // Update is called once per frame
-    private void Update()
-    {
-        Movement();
-    }
     //Player Movement controller
-    public void Movement()
+
+    /// <summary>
+    /// Takes the player's input for movement.
+    /// </summary>
+    public void GetInputs()
     {
         //Jump
-        if (Input.GetKeyDown(KeyCode.Space)&&PlayerIsJumpable)
+        if (Input.GetKeyDown(KeyCode.Space) && canJump)
         {
-            rb.AddForce(new Vector2(0, jumpForce));
-            PlayerIsJumpable = false;
+            jumping = true;
+            canJump = false;
         }
-        //walk
-        horizontalMovement = Input.GetAxisRaw("Horizontal") * speed;
+
+        //Horizontal Input
+        horizontalMovement = Input.GetAxisRaw("Horizontal") *
+            //Crouching
+            (crouching ? speed * 0.5f :
+            //Running
+            Input.GetKey(KeyCode.LeftShift) ? 2 * speed : 
+            //Walking
+            speed);
+
         //crouch
         /*        if (Input.GetKeyDown(KeyCode.C))
                 {
@@ -55,28 +57,51 @@ public class PlayerMovement : MonoBehaviour
                     sp.sprite = Idel;
                     collider2D.size = IdelSize;
                 }*/
-        //run
-        if (Input.GetKeyDown(KeyCode.LeftShift))
-        {
-            speed = speed * 2;
-        }
-        if (Input.GetKeyUp(KeyCode.LeftShift))
-        {
-            speed = oringinalspeed;
-        }
     }
-    //fixed update
-    public void FixedUpdate()
+    
+    /// <summary>
+    /// Executes movement.
+    /// </summary>
+    private void Movement()
     {
-        rb.velocity = new Vector2(horizontalMovement, rb.velocity.y);
+        //Horizontal movement
+        rigidBody.velocity = new Vector2(horizontalMovement, rigidBody.velocity.y);
+
+        //Jumping
+        if (jumping)
+        {
+            rigidBody.AddForce(new Vector2(0, jumpForce));
+            jumping = false;
+        }
     }
-    //groundCheck
+
+    /// <summary>
+    /// Sets the player's CanJump variable to true.
+    /// </summary>
     public void IsOnGround()
     {
-        PlayerIsJumpable = true;
-        if (PlayerIsJumpable)
-        {
-            Debug.Log("ok");
-        }
+        canJump = true;
+        //if (canJump)
+        //{
+        //    Debug.Log("ok");
+        //}
+    }
+
+    private void Start()
+    {
+        /*collider2D.size = IdelSize;
+        sp.sprite = Idel;
+
+        IdelSize = collider2D.size;*/
+    }
+
+    private void Update()
+    {
+        GetInputs();
+    }
+
+    public void FixedUpdate()
+    {
+        Movement();
     }
 }
