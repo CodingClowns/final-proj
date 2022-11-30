@@ -4,15 +4,29 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    // Start is called before the first frame update
+    [SerializeField] float movespeed = 1f;
+    Rigidbody2D Rigidbody;
+    BoxCollider2D Collide;
     void Start()
     {
-        
+        Rigidbody = GetComponent<Rigidbody2D>();
+        Collide = GetComponent<BoxCollider2D>();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+        if (IsFacingRight())
+        {
+            Rigidbody.velocity = new Vector2(movespeed, 0f);
+        }
+      else
+        {
+            Rigidbody.velocity = new Vector2(-movespeed, 0f);
+        }
+   
+    }
+    private bool IsFacingRight()
+    {
+        return transform.localScale.x > Mathf.Epsilon;
     }
 }
