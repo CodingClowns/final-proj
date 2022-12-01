@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public delegate void PlayerVoidEvent();
 public delegate void PlayerBoolEvent(bool value);
@@ -18,6 +19,8 @@ public class Health : MonoBehaviour
     [SerializeField] private int maxHealth;
     [SerializeField] private float maxInvincibilityTime;
     private float invincibilityTime;
+
+    [SerializeField] private Image healthBar;
 
     /// <summary>
     /// Current health of the player.
@@ -43,6 +46,7 @@ public class Health : MonoBehaviour
     public void Damage(int damage)
     {
         CurrentHealth -= damage;
+        UpdateHealthBar();
 
         if (CurrentHealth <= 0)
         {
@@ -65,7 +69,8 @@ public class Health : MonoBehaviour
         }
         if (CurrentHealth > 0)
         {
-            OnDamaged(canDamage);
+            if (OnDamaged != null)
+                OnDamaged(canDamage);
         }
     }
 
@@ -77,6 +82,7 @@ public class Health : MonoBehaviour
     public bool Heal(int damage)
     {
         CurrentHealth = Mathf.Min(CurrentHealth + damage, maxHealth);
+        UpdateHealthBar();
 
         if (CurrentHealth >= maxHealth)
         {
@@ -114,8 +120,23 @@ public class Health : MonoBehaviour
         CurrentHealth = maxHealth;
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            TryDamage(13);
+        }
+    }
+
     private void FixedUpdate()
     {
         InvincibilityTimer();
+    }
+
+    //===== Tin Ly
+    private void UpdateHealthBar()
+    {
+        float _healthPercentage = (float)CurrentHealth / maxHealth;
+        healthBar.rectTransform.localScale = new Vector3(_healthPercentage, 1.0f, 1.0f);
     }
 }
