@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 13312, guid: 0000000000000000e000000000000000, type: 0}
   m_Name: VolcanicSoil_0
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: -3467567320249729670, guid: 7f7ff9ccbbe269944a4d2f0e6836c2a3, type: 3}
+  m_Sprite: {fileID: -7575974850234296840, guid: 90725bf3e55aa5e47893808ba49cff1a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
     e00: 1

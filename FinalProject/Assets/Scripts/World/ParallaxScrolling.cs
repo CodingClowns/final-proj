@@ -18,6 +18,12 @@ public class ParallaxScrolling : MonoBehaviour
     [Range(-1.0f, 1.0f)]
     [SerializeField] private float scrollFactorY;
 
+
+    private void Start()
+    {
+        followObject = GameObject.FindGameObjectWithTag("MainCamera").transform;
+    }
+
     private void Update()
     {
         transform.position = Vector3.Scale(followObject.position, new Vector3(scrollFactorX, scrollFactorY));

@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public enum SceneName
 {
     TinScene_Demo,
+    FinZone,
 }
 
 public class SceneGameManager : SingletonMonobehaviour<SceneGameManager>
