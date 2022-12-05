@@ -139,6 +139,7 @@ GameObject:
   - component: {fileID: 2385660608428048739}
   - component: {fileID: 2385660608428048741}
   - component: {fileID: 2385660608428048740}
+  - component: {fileID: -1113568550100724921}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -306,3 +307,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxStamina: 3
   maxRechargeTime: 1
+--- !u!114 &-1113568550100724921
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2385660608428048738}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6ec76fa8872aee4c8a04b4ad9bd5b81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: 1
+  coolDownTime: 0.3
+  bulletSpeed: 7
+  fireOffset: {x: 0, y: 2}
+  bulletPrefab: {fileID: 7983935660156507413, guid: 43f5153765df8c44bb46587d674a7185, type: 3}
