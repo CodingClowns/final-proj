@@ -321,6 +321,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: 1
   coolDownTime: 0.3
-  bulletSpeed: 7
+  bulletSpeed: 14
   fireOffset: {x: 0, y: 2}
+  angleRange: 135
   bulletPrefab: {fileID: 7983935660156507413, guid: 43f5153765df8c44bb46587d674a7185, type: 3}

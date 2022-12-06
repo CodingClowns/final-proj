@@ -24,11 +24,14 @@ public class Bullet : MonoBehaviour
         {
             collision.GetComponent<Health>().TryDamage(damage);
         }
-        Destroy(gameObject);
+        if (!collision.CompareTag("VCAMConfiner"))
+        {
+            Destroy(gameObject);
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        Destroy(gameObject);
+        //Destroy(gameObject);
     }
 }

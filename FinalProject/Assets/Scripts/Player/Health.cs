@@ -44,7 +44,7 @@ public class Health : MonoBehaviour
     {
         CurrentHealth -= damage;
 
-        if (CurrentHealth <= 0)
+        if (CurrentHealth <= 0 && OnDeath != null)
         {
             OnDeath();
         }
@@ -63,7 +63,7 @@ public class Health : MonoBehaviour
         {
             Damage(damage);
         }
-        if (CurrentHealth > 0)
+        if (CurrentHealth > 0 && OnDamaged != null)
         {
             OnDamaged(canDamage);
         }
@@ -78,7 +78,7 @@ public class Health : MonoBehaviour
     {
         CurrentHealth = Mathf.Min(CurrentHealth + damage, maxHealth);
 
-        if (CurrentHealth >= maxHealth)
+        if (CurrentHealth >= maxHealth && OnFullHealth != null)
         {
             OnFullHealth();
             return true;
@@ -92,7 +92,7 @@ public class Health : MonoBehaviour
     /// <param name="damage"></param>
     public void TryHeal(int damage)
     {
-        if (!Heal(damage))
+        if (!Heal(damage) && OnHealed != null)
         {
             OnHealed();
         }

@@ -22,7 +22,7 @@ public class BulletSource : MonoBehaviour
 
     public void Fire(Vector2 direction)
     {
-        Bullet bullet = Instantiate(bulletPrefab, transform.position + new Vector3(0, 0, 10), Quaternion.FromToRotation(Vector2.up, direction));
+        Bullet bullet = Instantiate(bulletPrefab, transform.position + new Vector3(fireOffset.x, fireOffset.y, 10), Quaternion.FromToRotation(Vector2.up, direction));
         bullet.Initialize(direction, player);
     }
 
