@@ -4,104 +4,55 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [Tooltip("How fast the player moves.")]
     [SerializeField] private float speed;
-    [Tooltip("How much force the player jumps with.")]
     [SerializeField] private float jumpForce;
-
-    [Header("References")]
-    [SerializeField] private Rigidbody2D rigidBody;
-    [SerializeField] private Sprite idleSprite;
-    [SerializeField] private Sprite crouchingSprite;
-    [SerializeField] private BoxCollider2D playerCollider;
+    [SerializeField] Animator animator;
+    [SerializeField] private Rigidbody2D rb;
     [SerializeField] private SpriteRenderer spriteRenderer;
-
-    private bool crouching = false;
-    private bool canJump = false;
-    private bool jumping = false;
-    private float horizontalMovement;
-    private Vector2 hitboxIdle;
-    private Vector2 hitboxCrouching;
-
-    //Player Movement controller
-
-    /// <summary>
-    /// Takes the player's input for movement.
-    /// </summary>
-    public void GetInputs()
+    private bool canJump = true;
+    float horizontalMovement;
+    void Start()
     {
-        //Jump
+        rb.freezeRotation = true;
+    }
+
+    void Update()
+    {
+        animator.SetBool("IsRunning", false);
         if (Input.GetKeyDown(KeyCode.Space) && canJump)
         {
-            jumping = true;
+            rb.AddForce(new Vector2(0, jumpForce));
+            animator.SetBool("Jump", true);
             canJump = false;
         }
-
-        //Horizontal Input
-        horizontalMovement = Input.GetAxisRaw("Horizontal") *
-            //Crouching
-            (crouching ? speed * 0.5f :
-            //Running
-            Input.GetKey(KeyCode.LeftShift) ? 2 * speed : 
-            //Walking
-            speed);
-
-        //crouch
-        /*        if (Input.GetKeyDown(KeyCode.C))
-                {
-                    sp.sprite = Crouch;
-                    collider2D.size = CrouchSize;
-                }
-                if (Input.GetKeyUp(KeyCode.C))
-                {
-                    sp.sprite = Idel;
-                    collider2D.size = IdelSize;
-                }*/
-    }
-    
-    /// <summary>
-    /// Executes movement.
-    /// </summary>
-    private void Movement()
-    {
-        //Horizontal movement
-        rigidBody.velocity = new Vector2(horizontalMovement, rigidBody.velocity.y);
-
-        //Jumping
-        if (jumping)
+        horizontalMovement = Input.GetAxisRaw("Horizontal") * speed;
+        if(horizontalMovement > 0)
         {
-            rigidBody.AddForce(new Vector2(0, jumpForce));
-            jumping = false;
+            spriteRenderer.flipX = false;
+            animator.SetBool("IsRunning", true);
+        }
+        else if(horizontalMovement < 0)
+        {
+            spriteRenderer.flipX = true;
+            animator.SetBool("IsRunning", true);
+        }
+
+    }
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Death")
+        {
+            Application.LoadLevel(Application.loadedLevel);
+        }
+        if (collision.gameObject.tag == "Platform")
+        {
+            animator.SetBool("Jump", false);
+            canJump = true;
+
         }
     }
-
-    /// <summary>
-    /// Sets the player's CanJump variable to true.
-    /// </summary>
-    public void IsOnGround()
+    private void FixedUpdate()
     {
-        canJump = true;
-        //if (canJump)
-        //{
-        //    Debug.Log("ok");
-        //}
-    }
-
-    private void Start()
-    {
-        /*collider2D.size = IdelSize;
-        sp.sprite = Idel;
-
-        IdelSize = collider2D.size;*/
-    }
-
-    private void Update()
-    {
-        GetInputs();
-    }
-
-    public void FixedUpdate()
-    {
-        Movement();
+        rb.velocity = new Vector2(horizontalMovement, rb.velocity.y);
     }
 }
