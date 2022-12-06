@@ -81,10 +81,10 @@ public class PlayerMovement : MonoBehaviour
     public void IsOnGround()
     {
         canJump = true;
-        //if (canJump)
-        //{
-        //    Debug.Log("ok");
-        //}
+        if (canJump)
+        {
+           Debug.Log("ok");
+        }
     }
 
     private void Start()

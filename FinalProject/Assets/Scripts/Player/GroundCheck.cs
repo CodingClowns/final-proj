@@ -14,9 +14,9 @@ public class GroundCheck : MonoBehaviour
     // GroundCheck
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (!collision.gameObject.CompareTag("Player")) //The player can jump on anything except its own collider.
+        if (collision.gameObject.CompareTag("Platform")) //The player can jump on all the tiles as long as they are platform tiles.
         {
-            //Debug.Log("Player jumpable");
+            Debug.Log("Player jumpable");
             movement.IsOnGround();
         }
     }
