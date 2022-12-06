@@ -4,6 +4,16 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    enum AnimationState
+    {
+        Idel,
+        Walking,
+        Running,
+        Jumping,
+        falling,
+        Crouching,
+        CrouchWalking
+    }
     [Tooltip("How fast the player moves.")]
     [SerializeField] private float speed;
     [Tooltip("How much force the player jumps with.")]
@@ -11,17 +21,23 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("References")]
     [SerializeField] private Rigidbody2D rigidBody;
-    [SerializeField] private Sprite idleSprite;
-    [SerializeField] private Sprite crouchingSprite;
-    [SerializeField] private BoxCollider2D playerCollider;
     [SerializeField] private SpriteRenderer spriteRenderer;
+    [SerializeField] private Animator anim;
+    /// <summary>
+    /// Three colliders for player, Box and cirle for normal(idel,runing jumping falling and walking)
+    /// CapsuleCollider for crouch and crouchwalking
+    /// </summary>
+    [SerializeField] private CapsuleCollider2D PlayerCrouchCollider;
+    [SerializeField] private CircleCollider2D PlayerLowBodyPartCollider;
+    [SerializeField] private BoxCollider2D PlayerTopBodyPartCollider;
 
     private bool crouching = false;
     private bool canJump = false;
     private bool jumping = false;
+    private bool isrunning = false;
+
     private float horizontalMovement;
-    private Vector2 hitboxIdle;
-    private Vector2 hitboxCrouching;
+    private float originalspeed;
 
     //Player Movement controller
 
@@ -47,16 +63,20 @@ public class PlayerMovement : MonoBehaviour
             speed);
 
         //crouch
-        /*        if (Input.GetKeyDown(KeyCode.C))
+                if (Input.GetKeyDown(KeyCode.C))
                 {
-                    sp.sprite = Crouch;
-                    collider2D.size = CrouchSize;
+                    PlayerCrouchCollider.enabled = true;
+                    PlayerLowBodyPartCollider.enabled = false;
+                    PlayerTopBodyPartCollider.enabled = false;
+                    crouching = true;
                 }
                 if (Input.GetKeyUp(KeyCode.C))
                 {
-                    sp.sprite = Idel;
-                    collider2D.size = IdelSize;
-                }*/
+                    PlayerLowBodyPartCollider.enabled = true;
+                    PlayerTopBodyPartCollider.enabled = true;
+                    PlayerCrouchCollider.enabled = false;
+                    crouching = false;
+                }
     }
     
     /// <summary>
@@ -78,6 +98,56 @@ public class PlayerMovement : MonoBehaviour
     /// <summary>
     /// Sets the player's CanJump variable to true.
     /// </summary>
+    public void AnimaitonUpdates()
+    {
+        AnimationState state = AnimationState.Idel;
+        if (horizontalMovement>0)
+        {
+            state = AnimationState.Walking;
+            spriteRenderer.flipX = false;
+        }
+        else if (horizontalMovement <0)
+        {
+            state = AnimationState.Walking;
+            spriteRenderer.flipX = true;
+        }
+        if (isrunning)
+        {
+            state = AnimationState.Running;
+        }
+        else
+        {
+            state = AnimationState.Idel;
+        }
+        if (crouching)
+        {
+            state = AnimationState.Crouching;
+        }
+        if (crouching&&horizontalMovement>0)
+        {
+            state = AnimationState.CrouchWalking;
+        }
+        else if (crouching&&horizontalMovement<0)
+        {
+            state = AnimationState.CrouchWalking;
+        }
+        if (jumping)
+        {
+            state = AnimationState.Jumping;
+        }
+        else if (rigidBody.velocity.y< -.1f)
+        {
+            state = AnimationState.falling;
+        }
+        anim.SetInteger("state", (int)state);
+    }
+    /// <summary>
+    /// AnimationUpdates:
+    /// by switching animation's state to change the player's animation
+    /// Example:
+    /// when walking, in Enum is 1, give the feedback of this number/position to animator,
+    /// in the animator has a condition when is equal to one, then active walk animation.
+    /// </summary>
     public void IsOnGround()
     {
         canJump = true;
@@ -89,17 +159,29 @@ public class PlayerMovement : MonoBehaviour
 
     private void Start()
     {
-        /*collider2D.size = IdelSize;
-        sp.sprite = Idel;
-
-        IdelSize = collider2D.size;*/
+        originalspeed = speed;
     }
 
     private void Update()
     {
         GetInputs();
+        AnimaitonUpdates();
+        checkifrunning();
     }
 
+    public void checkifrunning()
+    {
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            isrunning = true;
+            Debug.Log("is running");
+        }
+        else if (Input.GetKeyUp(KeyCode.LeftShift))
+        {
+            isrunning = false;
+            Debug.Log("is not running");
+        }
+    }
     public void FixedUpdate()
     {
         Movement();
