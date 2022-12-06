@@ -12,7 +12,8 @@ public class PlayerMovement : MonoBehaviour
         Jumping,
         falling,
         Crouching,
-        CrouchWalking
+        CrouchWalking,
+        melee
     }
     [Tooltip("How fast the player moves.")]
     [SerializeField] private float speed;
@@ -35,9 +36,9 @@ public class PlayerMovement : MonoBehaviour
     private bool canJump = false;
     private bool jumping = false;
     private bool isrunning = false;
+    private bool isMeleeing = false;
 
     private float horizontalMovement;
-    private float originalspeed;
 
     //Player Movement controller
 
@@ -52,7 +53,15 @@ public class PlayerMovement : MonoBehaviour
             jumping = true;
             canJump = false;
         }
-
+        //melee
+        if (Input.GetKeyDown(KeyCode.V))
+        {
+            isMeleeing = true;
+        }
+        else if (Input.GetKeyUp(KeyCode.V))
+        {
+            isMeleeing = false;
+        }
         //Horizontal Input
         horizontalMovement = Input.GetAxisRaw("Horizontal") *
             //Crouching
@@ -91,6 +100,7 @@ public class PlayerMovement : MonoBehaviour
         if (jumping)
         {
             rigidBody.AddForce(new Vector2(0, jumpForce));
+            Debug.Log("jumping");
             jumping = false;
         }
     }
@@ -115,10 +125,6 @@ public class PlayerMovement : MonoBehaviour
         {
             state = AnimationState.Running;
         }
-        else
-        {
-            state = AnimationState.Idel;
-        }
         if (crouching)
         {
             state = AnimationState.Crouching;
@@ -131,13 +137,21 @@ public class PlayerMovement : MonoBehaviour
         {
             state = AnimationState.CrouchWalking;
         }
-        if (jumping)
+        if (rigidBody.velocity.y > .1f) 
         {
             state = AnimationState.Jumping;
         }
         else if (rigidBody.velocity.y< -.1f)
         {
             state = AnimationState.falling;
+        }
+        if (isMeleeing)
+        {
+            anim.SetBool("melee", true);
+        }
+        else if (!isMeleeing)
+        {
+            anim.SetBool("melee", false);
         }
         anim.SetInteger("state", (int)state);
     }
@@ -151,15 +165,15 @@ public class PlayerMovement : MonoBehaviour
     public void IsOnGround()
     {
         canJump = true;
-        //if (canJump)
-        //{
-        //    Debug.Log("ok");
-        //}
+        if (canJump)
+        {
+         Debug.Log("ok");
+        }
     }
 
     private void Start()
     {
-        originalspeed = speed;
+       
     }
 
     private void Update()
