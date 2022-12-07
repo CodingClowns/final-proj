@@ -6,7 +6,9 @@ using UnityEngine.UI;
 
 public enum SceneName
 {
-    TinScene_Demo,
+    KasraScene,
+    KingstonScene,
+    TinScene,
 }
 
 public class SceneGameManager : SingletonMonobehaviour<SceneGameManager>
@@ -15,8 +17,8 @@ public class SceneGameManager : SingletonMonobehaviour<SceneGameManager>
     [SerializeField] private CanvasGroup transitCanvasGroup = null;
     [SerializeField] private Image screenTransitionImage = null;
 
+    [SerializeField] private SceneName startingSceneName;
     private bool isTransiting;
-    public SceneName startingSceneName;
 
     //===========================================================================
     private IEnumerator Start()
