@@ -24,14 +24,17 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Rigidbody2D rigidBody;
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private Animator anim;
+
+    [SerializeField] private CapsuleCollider2D PlayerCrouchCollider;
+    [SerializeField] private CircleCollider2D PlayerLowBodyPartCollider;                    
+    [SerializeField] private BoxCollider2D PlayerTopBodyPartCollider;
+    [SerializeField] private BoxCollider2D GroundCheckCollider;
     /// <summary>
     /// Three colliders for player, Box and cirle for normal(idel,runing jumping falling and walking)
     /// CapsuleCollider for crouch and crouchwalking
     /// </summary>
-    [SerializeField] private CapsuleCollider2D PlayerCrouchCollider;
-    [SerializeField] private CircleCollider2D PlayerLowBodyPartCollider;
-    [SerializeField] private BoxCollider2D PlayerTopBodyPartCollider;
 
+    [Header("Triggers")]
     private bool crouching = false;
     private bool canJump = false;
     private bool jumping = false;
@@ -39,7 +42,6 @@ public class PlayerMovement : MonoBehaviour
     private bool isMeleeing = false;
 
     private float horizontalMovement;
-
     //Player Movement controller
 
     /// <summary>
@@ -77,6 +79,7 @@ public class PlayerMovement : MonoBehaviour
                     PlayerCrouchCollider.enabled = true;
                     PlayerLowBodyPartCollider.enabled = false;
                     PlayerTopBodyPartCollider.enabled = false;
+                    GroundCheckCollider.enabled = false;
                     crouching = true;
                 }
                 if (Input.GetKeyUp(KeyCode.C))
@@ -84,6 +87,7 @@ public class PlayerMovement : MonoBehaviour
                     PlayerLowBodyPartCollider.enabled = true;
                     PlayerTopBodyPartCollider.enabled = true;
                     PlayerCrouchCollider.enabled = false;
+                    GroundCheckCollider.enabled = true;
                     crouching = false;
                 }
     }
@@ -137,7 +141,7 @@ public class PlayerMovement : MonoBehaviour
         {
             state = AnimationState.CrouchWalking;
         }
-        if (rigidBody.velocity.y > .1f) 
+        if (rigidBody.velocity.y>.1f) //jumping
         {
             state = AnimationState.Jumping;
         }
@@ -165,10 +169,6 @@ public class PlayerMovement : MonoBehaviour
     public void IsOnGround()
     {
         canJump = true;
-        if (canJump)
-        {
-         Debug.Log("ok");
-        }
     }
 
     private void Start()
