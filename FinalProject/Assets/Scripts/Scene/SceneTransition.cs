@@ -5,7 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(BoxCollider2D))]
 public class SceneTransition : MonoBehaviour
 {
-    [SerializeField] private SceneName sceneNameToGoTo = SceneName.TinScene_Demo;
+    [SerializeField] private SceneName sceneNameToGoTo = SceneName.KasraScene;
     [SerializeField] private Vector3 scenePositionToGoTo = new Vector3();
 
     private void OnTriggerEnter2D(Collider2D collision)

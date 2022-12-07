@@ -8,7 +8,7 @@ public class TinTesting : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.L))
         {
-            SceneGameManager.Instance.FadeAndLoadScene(SceneName.TinScene_Demo.ToString(), transform.position);
+            SceneGameManager.Instance.FadeAndLoadScene(SceneName.KasraScene.ToString(), transform.position);
         }
     }
 }

@@ -6,49 +6,56 @@ public class Movement : MonoBehaviour
 {
     [SerializeField] private float speed;
     [SerializeField] private float jumpForce;
-    [SerializeField] Animator animator;
-    [SerializeField] private Rigidbody2D rb;
-    [SerializeField] private SpriteRenderer spriteRenderer;
+
+    private Animator animator;
+    private Rigidbody2D rb;
+    private SpriteRenderer spriteRenderer;
+
     private bool canJump = true;
     float horizontalMovement;
-    void Start()
+
+    private void Awake()
     {
-        rb.freezeRotation = true;
+        animator = GetComponent<Animator>();
+        rb = GetComponent<Rigidbody2D>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     void Update()
     {
-        animator.SetBool("IsRunning", false);
         if (Input.GetKeyDown(KeyCode.Space) && canJump)
         {
             rb.AddForce(new Vector2(0, jumpForce));
-            animator.SetBool("Jump", true);
+            animator.SetBool("isJumping", true);
             canJump = false;
         }
+
         horizontalMovement = Input.GetAxisRaw("Horizontal") * speed;
-        if(horizontalMovement > 0)
+
+        if (horizontalMovement > 0)
         {
             spriteRenderer.flipX = false;
-            animator.SetBool("IsRunning", true);
+            animator.SetBool("isRunning", true);
         }
-        else if(horizontalMovement < 0)
+        else if (horizontalMovement < 0)
         {
             spriteRenderer.flipX = true;
-            animator.SetBool("IsRunning", true);
+            animator.SetBool("isRunning", true);
         }
+        else
+            animator.SetBool("isRunning", false);
 
     }
     void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Death")
         {
-            Application.LoadLevel(Application.loadedLevel);
+            // Application.LoadLevel(Application.loadedLevel);
         }
         if (collision.gameObject.tag == "Platform")
         {
-            animator.SetBool("Jump", false);
+            animator.SetBool("isJumping", false);
             canJump = true;
-
         }
     }
     private void FixedUpdate()
