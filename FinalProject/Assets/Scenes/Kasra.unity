@@ -2864,8 +2864,8 @@ GameObject:
   - component: {fileID: 1551356830}
   - component: {fileID: 1551356834}
   - component: {fileID: 1551356833}
-  - component: {fileID: 1551356836}
   - component: {fileID: 1551356835}
+  - component: {fileID: 1551356836}
   m_Layer: 0
   m_Name: StarFox
   m_TagString: Player
@@ -3036,8 +3036,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6b8734cb48eec44a97a754b00267988, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 4.45
-  jumpForce: 73.9
+  speed: 3.48
+  jumpForce: 131.3
   animator: {fileID: 1551356830}
   rb: {fileID: 1551356834}
   spriteRenderer: {fileID: 1551356831}
