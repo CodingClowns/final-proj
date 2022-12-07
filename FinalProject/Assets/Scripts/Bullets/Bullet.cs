@@ -23,8 +23,8 @@ public class Bullet : MonoBehaviour
         if (collision.CompareTag(player ? "Enemy" : "Player"))
         {
             collision.GetComponent<Health>().TryDamage(damage);
+            Destroy(gameObject);
         }
-        Destroy(gameObject);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
