@@ -721,6 +721,7 @@ GameObject:
   - component: {fileID: 1551356834}
   - component: {fileID: 1551356836}
   - component: {fileID: 1551356835}
+  - component: {fileID: 1551356837}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -887,6 +888,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 3.48
   jumpForce: 131.3
+--- !u!114 &1551356837
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1551356829}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ad0c8be03f400945922a4712f53f940, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 0}
+  rigidbody: {fileID: 0}
 --- !u!4 &1870441511 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4838856177663440516, guid: e6fc1de36583d4c46b0773fbc2f15d7f, type: 3}
