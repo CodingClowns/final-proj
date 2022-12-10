@@ -13,10 +13,7 @@ public class PlayerMovement : MonoBehaviour
         falling,
         Crouching,
         CrouchWalking,
-        melee,
-        ShootwhileJumping,
-        ShootwhileRunning,
-        shooting
+        melee
     }
     [Tooltip("How fast the player moves.")]
     [SerializeField] private float speed;
@@ -32,8 +29,6 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private CircleCollider2D PlayerLowBodyPartCollider;                    
     [SerializeField] private BoxCollider2D PlayerTopBodyPartCollider;
     [SerializeField] private BoxCollider2D GroundCheckCollider;
-
-    [SerializeField] BoxCollider2D MeleeHitBox;
     /// <summary>
     /// Three colliders for player, Box and cirle for normal(idel,runing jumping falling and walking)
     /// CapsuleCollider for crouch and crouchwalking
@@ -200,15 +195,6 @@ public class PlayerMovement : MonoBehaviour
             isrunning = false;
             Debug.Log("is not running");
         }
-    }
-    public void notMeleeing()
-    {
-        MeleeHitBox.gameObject.SetActive(false);
-
-    }
-    public void Meleeing()
-    {
-        MeleeHitBox.gameObject.SetActive(true);
     }
     public void FixedUpdate()
     {

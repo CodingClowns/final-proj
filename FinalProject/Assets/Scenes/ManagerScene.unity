@@ -517,7 +517,7 @@ MonoBehaviour:
   transitDuration: 1
   transitCanvasGroup: {fileID: 247222956}
   screenTransitionImage: {fileID: 247222954}
-  startingSceneName: 1
+  startingSceneName: 2
 --- !u!1 &1182004778
 GameObject:
   m_ObjectHideFlags: 3
