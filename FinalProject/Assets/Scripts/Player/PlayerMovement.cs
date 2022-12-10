@@ -11,10 +11,7 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("References")]
     [SerializeField] private Rigidbody2D rigidBody;
-    [SerializeField] private Sprite idleSprite;
-    [SerializeField] private Sprite crouchingSprite;
     [SerializeField] private BoxCollider2D playerCollider;
-    [SerializeField] private SpriteRenderer spriteRenderer;
 
     private bool crouching = false;
     private bool canJump = false;
@@ -70,13 +67,13 @@ public class PlayerMovement : MonoBehaviour
         //Jumping
         if (jumping)
         {
-            rigidBody.AddForce(new Vector2(0, jumpForce));
+            rigidBody.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
             jumping = false;
         }
     }
 
     /// <summary>
-    /// Sets the player's CanJump variable to true.
+    /// Sets the player's CanJump variable to true. Used by groundcheck
     /// </summary>
     public void IsOnGround()
     {
@@ -85,6 +82,15 @@ public class PlayerMovement : MonoBehaviour
         //{
         //    Debug.Log("ok");
         //}
+    }
+
+    /// <summary>
+    /// Returns true if the player is jumping.
+    /// </summary>
+    /// <returns></returns>
+    public bool IsJumping()
+    {
+        return jumping || !canJump;
     }
 
     private void Start()
