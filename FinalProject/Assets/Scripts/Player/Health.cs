@@ -44,9 +44,9 @@ public class Health : MonoBehaviour
     {
         CurrentHealth -= damage;
 
-        if (CurrentHealth <= 0 && OnDeath != null)
+        if (CurrentHealth <= 0)
         {
-            OnDeath();
+            OnDeath?.Invoke();
         }
 
         invincibilityTime = maxInvincibilityTime;
@@ -63,9 +63,9 @@ public class Health : MonoBehaviour
         {
             Damage(damage);
         }
-        if (CurrentHealth > 0 && OnDamaged != null)
+        if (CurrentHealth > 0)
         {
-            OnDamaged(canDamage);
+            OnDamaged?.Invoke(canDamage);
         }
     }
 
@@ -78,9 +78,9 @@ public class Health : MonoBehaviour
     {
         CurrentHealth = Mathf.Min(CurrentHealth + damage, maxHealth);
 
-        if (CurrentHealth >= maxHealth && OnFullHealth != null)
+        if (CurrentHealth >= maxHealth)
         {
-            OnFullHealth();
+            OnFullHealth?.Invoke();
             return true;
         }
         return false;
@@ -92,9 +92,9 @@ public class Health : MonoBehaviour
     /// <param name="damage"></param>
     public void TryHeal(int damage)
     {
-        if (!Heal(damage) && OnHealed != null)
+        if (!Heal(damage))
         {
-            OnHealed();
+            OnHealed?.Invoke();
         }
     }
 
