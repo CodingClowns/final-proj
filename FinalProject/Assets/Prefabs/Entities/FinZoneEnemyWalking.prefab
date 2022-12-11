@@ -19,6 +19,7 @@ GameObject:
   - component: {fileID: 1404654214752649246}
   - component: {fileID: 1062090765196256313}
   - component: {fileID: -2398530395882080644}
+  - component: {fileID: 2630633248045062785}
   m_Layer: 0
   m_Name: FinZoneEnemyWalking
   m_TagString: Enemy
@@ -266,3 +267,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 3
   maxInvincibilityTime: 0.2
+--- !u!114 &2630633248045062785
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7195991900794433513}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e396b20002d2b114e910b243f933f03b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 1
+  isTrigger: 0

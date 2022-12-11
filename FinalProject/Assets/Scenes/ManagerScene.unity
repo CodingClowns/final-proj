@@ -852,9 +852,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1244329651}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d572df4b6f958f1429906bb531f6f00c, type: 3}
+  m_Script: {fileID: 11500000, guid: 0eec44edc8705454b99b975d5706ffec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  movement: {fileID: 1551356836}
+  player: {fileID: 1551356829}
 --- !u!212 &1244329655
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1397,7 +1399,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
-  jumpForce: 15
+  jumpForce: 12.5
   rigidBody: {fileID: 1551356834}
   playerCollider: {fileID: 1551356833}
 --- !u!114 &1551356837
@@ -1417,7 +1419,7 @@ MonoBehaviour:
   spriteRenderer: {fileID: 1551356831}
   bulletSource: {fileID: 1551356838}
   health: {fileID: 1551356840}
-  movement: {fileID: 1551356839}
+  movement: {fileID: 1551356836}
 --- !u!114 &1551356838
 MonoBehaviour:
   m_ObjectHideFlags: 0
