@@ -1010,7 +1010,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
-  jumpForce: 15
+  jumpForce: 12.5
   rigidBody: {fileID: 1551356834}
   playerCollider: {fileID: 1551356833}
 --- !u!114 &1551356840
