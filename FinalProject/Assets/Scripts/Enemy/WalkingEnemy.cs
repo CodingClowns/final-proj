@@ -26,6 +26,7 @@ public class WalkingEnemy : MonoBehaviour
     [SerializeField] private Rigidbody2D rigidBody;
     [SerializeField] private Health health;
 
+    private Vector3 previousPos;
     private bool right = true;
 
     private void Start()
@@ -40,11 +41,13 @@ public class WalkingEnemy : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (rigidBody.velocity.magnitude <= Mathf.Epsilon)
+        if (Vector3.Distance(transform.position, previousPos) <= Mathf.Epsilon)
         {
             ChangeDirection();
+            //print("Changing direction! Mwahahahaha");
         }
 
+        previousPos = transform.position;
         rigidBody.velocity = new Vector2(right ? walkSpeed : -walkSpeed, rigidBody.velocity.y);
     }
 
