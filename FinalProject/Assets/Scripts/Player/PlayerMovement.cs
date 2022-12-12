@@ -35,13 +35,26 @@ public class PlayerMovement : MonoBehaviour
         }
 
         //Horizontal Input
-        horizontalMovement = Input.GetAxisRaw("Horizontal") *
+        if (IsJumping()) //In air
+        {
+            horizontalMovement = Input.GetAxisRaw("Horizontal") *
             //Crouching
             (crouching ? speed * 0.5f :
             //Running
-            Input.GetKey(KeyCode.LeftShift) ? 2 * speed : 
+            Input.GetKey(KeyCode.LeftShift) ? 2 * speed :
+            //Walking
+            speed) * 0.01f + horizontalMovement * 0.99f;
+        }
+        else //On ground
+        {
+            horizontalMovement = Input.GetAxisRaw("Horizontal") *
+            //Crouching
+            (crouching ? speed * 0.5f :
+            //Running
+            Input.GetKey(KeyCode.LeftShift) ? 2 * speed :
             //Walking
             speed);
+        }
 
         //crouch
         /*        if (Input.GetKeyDown(KeyCode.C))
