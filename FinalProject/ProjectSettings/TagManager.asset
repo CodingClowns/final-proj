@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Platform
   - VCAMConfiner
+  - Chain
+  - CheckPoint
   layers:
   - Default
   - TransparentFX
