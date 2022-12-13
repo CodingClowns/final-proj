@@ -2,17 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
+
 public class GameManager : MonoBehaviour
 {
     public int score;
-    [SerializeField] private TextMeshProUGUI textmeshPro;
+    [SerializeField] private Text textmeshPro;
     void Start()
     {
-        
+        textmeshPro = FindObjectOfType<Text>();
     }
     void Update()
     {
-        textmeshPro.text = ": " + score;
+        textmeshPro.text = "Score: " + score;
     }
 }
