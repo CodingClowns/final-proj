@@ -7,7 +7,8 @@ using UnityEngine.UI;
 public enum SceneName
 {
     KasraScene,
-    KingstonScene,
+    KingstonSence,
+    FinZone,
     TinScene,
 }
 

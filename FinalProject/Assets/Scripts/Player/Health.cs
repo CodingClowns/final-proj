@@ -48,8 +48,10 @@ public class Health : MonoBehaviour
         {
             OnDeath?.Invoke();
         }
-
-        invincibilityTime = maxInvincibilityTime;
+        else
+        {
+            invincibilityTime = maxInvincibilityTime;
+        }
     }
 
     /// <summary>

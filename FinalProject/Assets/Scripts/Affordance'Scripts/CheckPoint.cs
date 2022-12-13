@@ -4,31 +4,31 @@ using UnityEngine;
 
 public class CheckPoint : MonoBehaviour
 {
-    [SerializeField] GameObject Player;
-    [SerializeField] List<GameObject> Checkpoints;
-    [SerializeField] Vector3 VectorPoints;
-    [SerializeField] float killzonepos;
+    [SerializeField] private List<GameObject> Checkpoints;
+    [SerializeField] private Vector3 VectorPoints;
+
+    [SerializeField] private Health health;
+    [SerializeField] private Rigidbody2D rigid;
+
+
     // Start is called before the first frame update
     void Start()
     {
-
+        health.OnDeath += OnDeath;
     }
 
-    // Update is called once per frame
-    void Update()
+    //Brings the player back to their previous checkpoint.
+    private void OnDeath()
     {
-        if (Player.transform.position.y < -killzonepos)
-        {
-            Player.transform.position = VectorPoints;
-        }
-
+        rigid.MovePosition(VectorPoints);
+        health.Heal(10);
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("CheckPoint"))
         {
-            VectorPoints = Player.transform.position;
+            VectorPoints = transform.position;
             Destroy(collision.gameObject);
         }
     }

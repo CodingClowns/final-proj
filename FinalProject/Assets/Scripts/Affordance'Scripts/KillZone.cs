@@ -19,7 +19,7 @@ public class KillZone : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            Destroy(collision.gameObject);
+            collision.gameObject.GetComponent<Health>().TryDamage(10);
         }
     }
 }
