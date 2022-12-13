@@ -541,6 +541,7 @@ MonoBehaviour:
   transitDuration: 1
   transitCanvasGroup: {fileID: 247222956}
   screenTransitionImage: {fileID: 247222954}
+  player: {fileID: 1551356834}
   startingSceneName: 0
 --- !u!1 &1182004778
 GameObject:
@@ -891,7 +892,7 @@ Animator:
   m_GameObject: {fileID: 1551356829}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: f48114bf58b567240894b38598db6b6d, type: 2}
+  m_Controller: {fileID: 9100000, guid: 84d576ce1fe65074b90956fab3edffa2, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -1094,6 +1095,7 @@ MonoBehaviour:
   jumpForce: 12.5
   rigidBody: {fileID: 1551356834}
   playerCollider: {fileID: 1551356833}
+  horizontalMovement: 0
 --- !u!114 &1551356840
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1103,13 +1105,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1551356829}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6fbe62eb5d09d0e4ea4d4f82cd93696d, type: 3}
+  m_Script: {fileID: 11500000, guid: 57314cdf635f5234a8926551ff8e6333, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 5
   maxInvincibilityTime: 2
-  invincibilityTime: 0
-  <CurrentHealth>k__BackingField: 0
 --- !u!114 &1551356841
 MonoBehaviour:
   m_ObjectHideFlags: 0

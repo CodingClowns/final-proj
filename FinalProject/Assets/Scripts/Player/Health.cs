@@ -64,10 +64,10 @@ public class Health : MonoBehaviour
         if (canDamage)
         {
             Damage(damage);
-        }
-        if (CurrentHealth > 0)
-        {
-            OnDamaged?.Invoke(canDamage);
+            if (CurrentHealth > 0)
+            {
+                OnDamaged?.Invoke(canDamage);
+            }
         }
     }
 

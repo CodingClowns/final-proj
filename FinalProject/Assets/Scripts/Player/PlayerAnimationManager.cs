@@ -29,7 +29,7 @@ public class PlayerAnimationManager : MonoBehaviour
 
     private void OnDamaged(bool value)
     {
-        damageCooldown = 0.1f;
+        damageCooldown = 0.4f;
     }
 
     /// <summary>
@@ -38,7 +38,7 @@ public class PlayerAnimationManager : MonoBehaviour
     /// <param name="deltaTime"></param>
     private void AnimationUpdate()
     {
-        animator.SetBool("isRunning", Mathf.Abs(rigidbody.velocity.x) > Mathf.Epsilon); //Player will be running when moving.
+        animator.SetBool("isRunning", Mathf.Abs(rigidbody.velocity.x) > 0.2f); //Player will be running when moving.
         spriteRenderer.flipX = !facing; //Sprite will face in the direction of the player.
         spriteRenderer.color = damageCooldown > 0 ? Color.clear : Color.white; //Sprite will flash clear when damaged
         animator.SetBool("isJumping", movement.IsJumping()); //Player jumping animation controlled by movement script.
@@ -49,11 +49,11 @@ public class PlayerAnimationManager : MonoBehaviour
     private void HandleFacingLogic(float velocity)
     {
         //Facing logic. The character will only turn in a direction when the player moves in that direction.
-        if (velocity > 0) 
+        if (velocity > 0.2f) 
         { 
             facing = true; 
         }
-        else if (velocity < 0) 
+        else if (velocity < -0.2f) 
         { 
             facing = false; 
         }

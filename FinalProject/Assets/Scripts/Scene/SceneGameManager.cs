@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public enum SceneName
 {
-    KasraScene,
+    Kasra,
     KingstonSence,
     FinZone,
     TinScene,
@@ -17,6 +17,7 @@ public class SceneGameManager : SingletonMonobehaviour<SceneGameManager>
     [SerializeField] private float transitDuration = 1.0f;
     [SerializeField] private CanvasGroup transitCanvasGroup = null;
     [SerializeField] private Image screenTransitionImage = null;
+    [SerializeField] private Rigidbody2D player;
 
     [SerializeField] private SceneName startingSceneName;
     private bool isTransiting;
@@ -48,7 +49,8 @@ public class SceneGameManager : SingletonMonobehaviour<SceneGameManager>
 
         yield return StartCoroutine(TransitAlpha(1.0f));
 
-        // Player.Instance.gameObject.transform.position = spawnPosition;
+        player.MovePosition(spawnPosition);
+        player.transform.position = spawnPosition;
 
         EventHandler.CallBeforeSceneUnloadEvent();
 

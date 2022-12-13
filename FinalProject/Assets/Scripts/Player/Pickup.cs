@@ -19,7 +19,7 @@ public class Pickup : MonoBehaviour
         progress = 0.0f;
         PickNewRandomDestination();
     }
-    public void OnCollisionEnter2D(Collision2D collision)
+    public void OnTriggerEnter2D(Collider2D collision)
     {
 
         if (collision.transform.tag == "Player") { game.score += 1; Destroy(gameObject); };

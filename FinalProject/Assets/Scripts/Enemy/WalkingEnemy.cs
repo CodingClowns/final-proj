@@ -57,12 +57,12 @@ public class WalkingEnemy : MonoBehaviour
     private void ChangeDirection()
     {
         right = !right;
-        OnChangeDirection(right);
+        OnChangeDirection?.Invoke(right);
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (edgeDetection && !collision.CompareTag("Player"))
+        if (edgeDetection && collision.CompareTag("Platform"))
         {
             ChangeDirection();
         }

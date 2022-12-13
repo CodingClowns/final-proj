@@ -16,7 +16,7 @@ public class PlayerMovement : MonoBehaviour
     private bool crouching = false;
     private bool canJump = false;
     private bool jumping = false;
-    private float horizontalMovement;
+    [SerializeField] private float horizontalMovement = 0;
     private Vector2 hitboxIdle;
     private Vector2 hitboxCrouching;
 

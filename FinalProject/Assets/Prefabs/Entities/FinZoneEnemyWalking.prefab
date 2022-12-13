@@ -18,8 +18,8 @@ GameObject:
   - component: {fileID: 7683129801053770329}
   - component: {fileID: 1404654214752649246}
   - component: {fileID: 1062090765196256313}
-  - component: {fileID: -2398530395882080644}
   - component: {fileID: 2630633248045062785}
+  - component: {fileID: 7333443255455976005}
   m_Layer: 0
   m_Name: FinZoneEnemyWalking
   m_TagString: Enemy
@@ -79,7 +79,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1716328555
-  m_SortingLayer: 2
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 3623893162820455082, guid: a07a2d5b07e961440bd2cb5724e1c49a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -238,7 +238,7 @@ MonoBehaviour:
   edgeDetection: 1
   walkSpeed: 5
   rigidBody: {fileID: 8573222842831762109}
-  health: {fileID: -2398530395882080644}
+  health: {fileID: 7333443255455976005}
 --- !u!114 &1062090765196256313
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -253,20 +253,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   edgeDetection: {fileID: 1404654214752649246}
   animator: {fileID: 4190067268378247163}
---- !u!114 &-2398530395882080644
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7195991900794433513}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6fbe62eb5d09d0e4ea4d4f82cd93696d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 3
-  maxInvincibilityTime: 0.2
 --- !u!114 &2630633248045062785
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -281,3 +267,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 1
   isTrigger: 0
+--- !u!114 &7333443255455976005
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7195991900794433513}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57314cdf635f5234a8926551ff8e6333, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 3
+  maxInvincibilityTime: 0.2

@@ -5,19 +5,16 @@ using UnityEngine;
 [RequireComponent(typeof(BoxCollider2D))]
 public class SceneTransition : MonoBehaviour
 {
-    [SerializeField] private SceneName sceneNameToGoTo = SceneName.KasraScene;
+    [SerializeField] private SceneName sceneNameToGoTo = SceneName.Kasra;
     [SerializeField] private Vector3 scenePositionToGoTo = new Vector3();
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        // Player player = collision.GetComponent<Player>();
-
-        /*
-        if (player != null)
+        if (collision.CompareTag("Player"))
         {
-            // player.transform.position = new Vector3(scenePositionToGo.x, scenePositionToGo.y, 0.0f);
+            //collision.GetComponent<Rigidbody2D>().MovePosition(new Vector2(scenePositionToGoTo.x, scenePositionToGoTo.y));
+
             SceneGameManager.Instance.FadeAndLoadScene(sceneNameToGoTo.ToString(), scenePositionToGoTo);
         }
-        */
     }
 }
