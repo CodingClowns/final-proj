@@ -13,7 +13,7 @@ public class PassiveHazard : MonoBehaviour
     {
         if (!isTrigger && collision.gameObject.CompareTag("Player"))
         {
-            collision.gameObject.GetComponent<Health>().TryDamage(damage);
+            collision.gameObject.GetComponentInParent<Health>().TryDamage(damage);
         }
     }
 
@@ -21,7 +21,7 @@ public class PassiveHazard : MonoBehaviour
     {
         if (isTrigger && collision.CompareTag("Player"))
         {
-            collision.GetComponent<Health>().TryDamage(damage);
+            collision.GetComponentInParent<Health>().TryDamage(damage);
         }
     }
 }
