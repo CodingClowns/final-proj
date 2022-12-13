@@ -2,27 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Detects ground collision and tells the player when they can jump.
+/// </summary>
 public class GroundCheck : MonoBehaviour
 {
-    // Start is called before the first frame update
-    [SerializeField] PlayerMovement playerMovement;
-
-    void Start()
+    [Header("References")]
+    [SerializeField] private PlayerMovement movement;
+    [SerializeField] private GameObject player;
+    
+    // GroundCheck
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-    public void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.CompareTag("Platform"))
+        if (collision.gameObject.CompareTag("Platform")) //The player can jump on anything except its own collider.
         {
-            playerMovement.IsOnGround();
-            Debug.Log("Onground!");
+            //Debug.Log("Player jumpable");
+            movement.IsOnGround();
         }
     }
 }
