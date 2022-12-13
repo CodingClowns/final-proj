@@ -7,6 +7,9 @@ TagManager:
   - Platform
   - VCAMConfiner
   - Enemy
+  - CheckPoint
+  - Chain
+  - IceTrap
   layers:
   - Default
   - TransparentFX
@@ -67,4 +70,7 @@ TagManager:
     locked: 0
   - name: Collisions
     uniqueID: 1758307675
+    locked: 0
+  - name: OverBackGround
+    uniqueID: 3026147567
     locked: 0
