@@ -14,7 +14,7 @@ public class GroundCheck : MonoBehaviour
     // GroundCheck
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Platform")) //The player can jump on anything except its own collider.
+        if (collision.gameObject.CompareTag("Platform") || collision.gameObject.CompareTag("IceTrap")) //boing
         {
             //Debug.Log("Player jumpable");
             movement.IsOnGround();
