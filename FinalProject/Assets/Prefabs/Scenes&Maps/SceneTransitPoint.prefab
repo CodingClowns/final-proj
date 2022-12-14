@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneNameToGoTo: 0
-  scenePositionToGoTo: {x: 0, y: 0, z: 0}
+  scenePositionToGoTo: {x: -4, y: 17, z: 0}
 --- !u!61 &8311615241423634486
 BoxCollider2D:
   m_ObjectHideFlags: 0

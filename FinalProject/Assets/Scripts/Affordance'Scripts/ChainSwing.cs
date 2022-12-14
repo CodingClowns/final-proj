@@ -4,25 +4,30 @@ using UnityEngine;
 
 public class ChainSwing : MonoBehaviour
 {
-    [SerializeField] Rigidbody2D rigidbody2D;
+    [SerializeField] Rigidbody2D rigid;
 
-    [SerializeField] private float SwingSpeed;
+    [SerializeField] private float swingAmplitude;
+    [SerializeField] private float swingFrequency;
     [SerializeField] private float leftAngle;
     [SerializeField] private float rightAngle;
+
+    private float time = 0;
 
     bool movingClockwise;
     // Start is called before the first frame update
     void Start()
     {
-        movingClockwise = true; 
+        movingClockwise = true;
+        time = Mathf.PI * 0.75f;
     }
     
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         changeDiretion();
         Swing();
+        time += Time.deltaTime;
     }
 
     public void changeDiretion()
@@ -38,14 +43,7 @@ public class ChainSwing : MonoBehaviour
     }
     public void Swing()
     {
-        if (movingClockwise)
-        {
-            rigidbody2D.angularVelocity = SwingSpeed;
-        }
-        if (!movingClockwise)
-        {
-            rigidbody2D.angularVelocity = -1 * SwingSpeed;
-        }
+        rigid.angularVelocity = Mathf.Sin(time * swingFrequency) * swingAmplitude;
     }
 
 }

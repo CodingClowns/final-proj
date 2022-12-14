@@ -6,10 +6,9 @@ public class MovingPlatform : MonoBehaviour
 {
     [SerializeField] private GameObject[] waypoints;
     private int waypointsindx = 0;
-    [SerializeField] float platformMovingSpeed = 2.0f;
+    [SerializeField] private float platformMovingSpeed = 2.0f;
 
-    // Start is called before the first frame update
-    private void Update()
+    private void FixedUpdate()
     {
 
         if (Vector2.Distance(waypoints[waypointsindx].transform.position, transform.position) < .1f)
@@ -19,7 +18,8 @@ public class MovingPlatform : MonoBehaviour
             {
                 waypointsindx = 0;
             }
-        } 
-        transform.position = Vector2.MoveTowards(transform.position, waypoints[waypointsindx].transform.position, Time.deltaTime * platformMovingSpeed);  
+        }
+        
+        transform.position = Vector2.MoveTowards(transform.position, waypoints[waypointsindx].transform.position, Time.deltaTime * platformMovingSpeed);
     }
 }
