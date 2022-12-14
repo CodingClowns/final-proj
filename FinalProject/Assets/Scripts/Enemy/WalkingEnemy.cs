@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public delegate void EnemyBoolEvent(bool right);
+public delegate void EnemyBoolEvent(bool value);
 /// <summary>
 /// Makes an object a walking enemy with edge detection.
 /// Edge detection only works if there is a trigger on either side of the enemy to detect
@@ -16,6 +16,12 @@ public class WalkingEnemy : MonoBehaviour
     /// This is used for animation purposes.
     /// </summary>
     public event EnemyBoolEvent OnChangeDirection;
+    /// <summary>
+    /// Called whenever the enemy's contact with the ground changes.
+    /// The parameter is true if the enemy is on the ground.
+    /// Also used for animation.
+    /// </summary>
+    public event EnemyBoolEvent OnGroundedChange;
 
     [Tooltip("Should this enemy turn around at edges?")]
     [SerializeField] private bool edgeDetection = true;
@@ -28,6 +34,7 @@ public class WalkingEnemy : MonoBehaviour
 
     private Vector3 previousPos;
     private bool right = true;
+    private bool onGround = false;
 
     private void Start()
     {
@@ -41,14 +48,26 @@ public class WalkingEnemy : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (Vector3.Distance(transform.position, previousPos) <= Mathf.Epsilon)
-        {
-            ChangeDirection();
-            //print("Changing direction! Mwahahahaha");
-        }
+        if (rigidBody.GetContacts(new ContactPoint2D[1]) > 0) {
+            if (Vector3.Distance(transform.position, previousPos) <= Mathf.Epsilon)
+            {
+                ChangeDirection();
+                //print("Changing direction! Mwahahahaha");
+            }
 
-        previousPos = transform.position;
-        rigidBody.velocity = new Vector2(right ? walkSpeed : -walkSpeed, rigidBody.velocity.y);
+            previousPos = transform.position;
+            rigidBody.velocity = new Vector2(right ? walkSpeed : -walkSpeed, rigidBody.velocity.y);
+            if (!onGround)
+            {
+                onGround = true;
+                OnGroundedChange?.Invoke(true);
+            }
+        }
+        else if (onGround)
+        {
+            onGround = false;
+            OnGroundedChange?.Invoke(false);
+        }
     }
 
     /// <summary>
