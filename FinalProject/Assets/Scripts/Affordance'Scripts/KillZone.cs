@@ -21,5 +21,9 @@ public class KillZone : MonoBehaviour
         {
             collision.gameObject.GetComponent<Health>().TryDamage(10);
         }
+        if (collision.gameObject.CompareTag("IceTrap"))
+        {
+            Destroy(collision.gameObject);
+        }
     }
 }
