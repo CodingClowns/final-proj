@@ -42,7 +42,7 @@ public class Health : MonoBehaviour
     /// <param name="damage"></param>
     public void Damage(int damage)
     {
-        CurrentHealth -= damage;
+        CurrentHealth = Mathf.Max(CurrentHealth - damage, 0);
 
         if (CurrentHealth <= 0)
         {
