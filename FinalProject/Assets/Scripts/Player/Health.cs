@@ -46,6 +46,7 @@ public class Health : MonoBehaviour
 
         if (CurrentHealth <= 0)
         {
+            invincibilityTime = Time.deltaTime * 2; //Prevents the player from being damaged immediately after respawning (Which did in fact happen at times)
             OnDeath?.Invoke();
         }
         else
