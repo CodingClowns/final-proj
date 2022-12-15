@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Kasra.unity
     guid: 499acea9e287f9e4ba26981968887c88
+  - enabled: 1
+    path: Assets/Scenes/EndScene.unity
+    guid: eaec6964e8c2ec248b3f0dad31084ffa
   m_configObjects: {}

@@ -1630,7 +1630,7 @@ GameObject:
   - component: {fileID: 352582818}
   m_Layer: 0
   m_Name: Fire (8)
-  m_TagString: Untagged
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3344,7 +3344,7 @@ GameObject:
   - component: {fileID: 678822490}
   m_Layer: 0
   m_Name: Fire (3)
-  m_TagString: Untagged
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3552,7 +3552,7 @@ GameObject:
   - component: {fileID: 715506321}
   m_Layer: 0
   m_Name: Fire (2)
-  m_TagString: Untagged
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8877,8 +8877,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 878617667}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 85, y: 0.9, z: 0}
-  m_LocalScale: {x: 141.99, y: 5.542794, z: 5.542794}
+  m_LocalPosition: {x: 80, y: 0.9, z: 0}
+  m_LocalScale: {x: 148.1, y: 5.542794, z: 5.542794}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 7
@@ -9048,7 +9048,7 @@ GameObject:
   - component: {fileID: 893932942}
   m_Layer: 0
   m_Name: Fire (11)
-  m_TagString: Untagged
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9518,7 +9518,7 @@ GameObject:
   - component: {fileID: 1003823070}
   m_Layer: 0
   m_Name: Fire
-  m_TagString: Untagged
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9660,7 +9660,7 @@ GameObject:
   - component: {fileID: 1021479142}
   m_Layer: 0
   m_Name: Fire (4)
-  m_TagString: Untagged
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9908,7 +9908,7 @@ GameObject:
   - component: {fileID: 1135046980}
   m_Layer: 0
   m_Name: Fire (12)
-  m_TagString: Untagged
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -26361,7 +26361,7 @@ GameObject:
   - component: {fileID: 1479405318}
   m_Layer: 0
   m_Name: Fire (9)
-  m_TagString: Untagged
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -26503,7 +26503,7 @@ GameObject:
   - component: {fileID: 1502041158}
   m_Layer: 0
   m_Name: Fire (5)
-  m_TagString: Untagged
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -28678,7 +28678,7 @@ GameObject:
   - component: {fileID: 1890675877}
   m_Layer: 0
   m_Name: Fire (10)
-  m_TagString: Untagged
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -29019,7 +29019,7 @@ GameObject:
   - component: {fileID: 2058368711}
   m_Layer: 0
   m_Name: Fire (1)
-  m_TagString: Untagged
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -29253,7 +29253,7 @@ GameObject:
   - component: {fileID: 2072885643}
   m_Layer: 0
   m_Name: Fire (13)
-  m_TagString: Untagged
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -29395,7 +29395,7 @@ GameObject:
   - component: {fileID: 2073692321}
   m_Layer: 0
   m_Name: Fire (6)
-  m_TagString: Untagged
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -29537,7 +29537,7 @@ GameObject:
   - component: {fileID: 2107339626}
   m_Layer: 0
   m_Name: Fire (7)
-  m_TagString: Untagged
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

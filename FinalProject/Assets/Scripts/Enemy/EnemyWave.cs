@@ -5,6 +5,8 @@ using UnityEngine;
 public class EnemyWave : MonoBehaviour
 {
     [SerializeField] private EnemyWave nextWave;
+    [SerializeField] private LockDoor exitTransition;
+
     private List<GameObject> enemies = new List<GameObject>();
     private float waveTimer = 0;
     private bool activated = false;
@@ -15,10 +17,17 @@ public class EnemyWave : MonoBehaviour
         {
             waveTimer += Time.deltaTime;
 
-            if (waveTimer > 1.5f && nextWave != null)
+            if (waveTimer > 1.5f)
             {
-                nextWave.Begin();
-                activated = false;
+                if (nextWave != null)
+                {
+                    nextWave.Begin();
+                    activated = false;
+                }
+                else
+                {
+                    exitTransition.Open();
+                }
             }
         }
 

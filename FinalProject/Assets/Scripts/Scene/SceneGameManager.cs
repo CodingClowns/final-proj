@@ -10,6 +10,7 @@ public enum SceneName
     KingstonSence,
     FinZone,
     TinScene,
+    EndScene,
 }
 
 public class SceneGameManager : SingletonMonobehaviour<SceneGameManager>
